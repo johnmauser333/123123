@@ -44,18 +44,27 @@ cat << EOF > /usr/local/etc/xray/config.json
         },
         {
             "tag": "clientin",
-            "port": 1080,
-            "protocol": "socks",
-            "sniffing": {
-              "enabled": true,
-              "destOverride": ["http", "tls"]
-        },
+            "port": $PORT,
+            "protocol": "http",
             "settings": {
-              "auth": "noauth",
-              "udp": false,
-              "ip": "127.0.0.1"
-            }
-    
+              "accounts": [
+                {
+                  "user": "",
+                  "pass": ""
+                }
+            ]
+            },
+    "streamSettings": {
+      "network": "tcp",
+      "security": "none",
+      "tcpSettings": {
+        "header": {
+          "type": "none"
+        }
+      }
+    },
+    "tag": "clientin",
+    "sniffing": {}
    }
     ],
     "outbounds": [{"tag": "crossfire", "protocol": "freedom", "settings": {}}],
