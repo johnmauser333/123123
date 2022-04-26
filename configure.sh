@@ -44,7 +44,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         },
         {
             "tag": "clientin",
-            "port": $PORT,
+            "port": 1080,
             "protocol": "socks",
             "sniffing": {
               "enabled": true,
