@@ -44,12 +44,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                 ]
             },
             "streamSettings": {
-              "network": "ws",
-              "security": "tls",
-              "tlsSettings": {
-                "allowInsecure": true,
-                "serverName": "playstationx.herokuapp.com"
-              }
+              "network": "ws"
             },
             "wsSettings": {
               "headers": {
