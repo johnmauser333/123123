@@ -14,17 +14,16 @@ install -d /usr/local/etc/xray
 cat << EOF > /usr/local/etc/xray/config.json
 {
     "inbounds": [
-//        {
-//            "tag": "in_tomcat",
-//            "port": 443,
-//            "protocol": "dokodemo-door",
-//            "settings": {
-//                "address": "127.0.0.1",
-//               "port": 8080,
-//                "network": "tcp"
-//            }
-        
-//        },
+        {
+            "tag": "in_tomcat",
+            "port": $PORT,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1",
+                "port": 8080,
+                "network": "tcp"
+            }
+        },
         {
             "tag": "in_interconn",
             "port": $PORT,
@@ -41,33 +40,8 @@ cat << EOF > /usr/local/etc/xray/config.json
             "streamSettings": {
               "network": "ws"
             }
-        },
-        {
-            "tag": "clientin",
-            "port": $PORT,
-            "protocol": "http",
-            "settings": {
-              "accounts": [
-                {
-                  "user": "",
-                  "pass": ""
-                }
-            ]
-            },
-    "streamSettings": {
-      "network": "tcp",
-      "security": "none",
-      "tcpSettings": {
-        "header": {
-          "type": "none"
         }
-      }
-    },
-    "tag": "clientin",
-    "sniffing": {}
-   }
     ],
-    "outbounds": [{"tag": "crossfire", "protocol": "freedom", "settings": {}}],
     "reverse": {
         "portals": [
             {
@@ -84,22 +58,6 @@ cat << EOF > /usr/local/etc/xray/config.json
                     "in_tomcat"
                 ],
                 "outboundTag": "portal"
-            },
-            {
-                "type": "field",
-                "inboundTag": [
-                    "clientin"
-                ],
-                "ip": "192.168.50.50",
-                "port": "3333",
-                "outboundTag": "portal"
-            },
-                        {
-                "type": "field",
-                "inboundTag": [
-                    "clientin"
-                ],
-                "outboundTag": "crossfire"
             },
             {
                 "type": "field",
