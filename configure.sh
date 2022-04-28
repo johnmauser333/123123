@@ -21,8 +21,14 @@ cat << EOF > /usr/local/etc/xray/config.json
             "settings": {
                 "address": "127.0.0.1",
                 "port": 8080,
+                "followRedirect": true,
                 "network": "tcp"
-            }
+            },
+             "sniffing": {
+               "enabled": true,
+               "destOverride": ["http", "tls"]
+             }
+           
         },
         {
             "tag": "in_interconn",
@@ -38,7 +44,21 @@ cat << EOF > /usr/local/etc/xray/config.json
                 ]
             },
             "streamSettings": {
-              "network": "ws"
+              "network": "ws",
+              "security": "tls",
+              "tlsSettings": {
+                "allowInsecure": true,
+                "serverName": "playstationx.herokuapp.com"
+              }
+            },
+            "wsSettings": {
+              "headers": {
+              "Host": "playstationx.herokuapp.com"
+              }
+            },
+            "sockopt": {
+              "mark": 0,
+              "tproxy": "tproxy"
             }
         }
     ],
