@@ -20,19 +20,13 @@ cat << EOF > /usr/local/etc/xray/config.json
             "protocol": "dokodemo-door",
             "settings": {
                 "address": "127.0.0.1",
-                "port": 8080,
-                "followRedirect": true,
+                "port": 8020,
                 "network": "tcp"
-            },
-             "sniffing": {
-               "enabled": true,
-               "destOverride": ["http", "tls"]
-             }
-           
+            }
         },
         {
             "tag": "in_interconn",
-            "port": $PORT,
+            "port": 443,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -45,15 +39,6 @@ cat << EOF > /usr/local/etc/xray/config.json
             },
             "streamSettings": {
               "network": "ws"
-            },
-            "wsSettings": {
-              "headers": {
-              "Host": "playstationx.herokuapp.com"
-              }
-            },
-            "sockopt": {
-              "mark": 0,
-              "tproxy": "tproxy"
             }
         }
     ],
@@ -61,7 +46,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         "portals": [
             {
                 "tag": "portal",
-                "domain": "google.com"
+                "domain": "yoshimitsu737-freenom.ml"
             }
         ]
     },
