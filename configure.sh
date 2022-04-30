@@ -26,7 +26,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         },
         {
             "tag": "in_interconn",
-            "port": 443,
+            "port": $PORT,
             "protocol": "vmess",
             "settings": {
                 "clients": [
